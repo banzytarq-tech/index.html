@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0a1020" />
+  <meta name="description" content="Portfolio professionnel d'Ali — développeur web junior en apprentissage. Découvrez son profil, ses compétences et contactez-le sur WhatsApp." />
+  <title>Ali — Portfolio Développeur Web</title>
+  <style>
+    :root {
+      --bg: #080d19;
+      --panel: rgba(17, 26, 46, .78);
+      --panel-solid: #111a2e;
+      --text: #eef3ff;
+      --muted: #a6b2ca;
+      --line: rgba(173, 191, 224, .16);
+      --mint: #69f0c2;
+      --blue: #7ca7ff;
+      --shadow: 0 24px 70px rgba(0,0,0,.28);
+      --radius: 24px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; color: var(--text); background:
+        radial-gradient(ellipse at 80% 0%, rgba(72, 103, 209, .20), transparent 38%),
+        radial-gradient(ellipse at 8% 25%, rgba(63, 235, 178, .09), transparent 30%), var(--bg);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    .wrap { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+    .nav-shell { position: sticky; top: 0; z-index: 20; backdrop-filter: blur(18px); background: rgba(8,13,25,.78); border-bottom: 1px solid var(--line); }
+    nav { min-height: 76px; display: flex; justify-content: space-between; align-items: center; gap: 22px; }
+    .brand { display: inline-flex; align-items: center; gap: 11px; font-weight: 800; letter-spacing: -.03em; }
+    .brand-mark { display:grid; place-items:center; width:38px; height:38px; border-radius:12px; color:#07111a; background:linear-gradient(135deg,var(--mint),var(--blue)); font-size:17px; font-weight:900; }
+    .brand span:last-child { font-size: 16px; }
+    .nav-links { display:flex; gap:26px; align-items:center; color:var(--muted); font-size:14px; }
+    .nav-links a:hover { color:var(--mint); }
+    .nav-cta { padding:10px 15px; border-radius:999px; color:var(--text)!important; border:1px solid rgba(105,240,194,.42); background:rgba(105,240,194,.08); }
+    .menu-toggle { display:none; border:1px solid var(--line); background:var(--panel); color:var(--text); border-radius:10px; padding:8px 11px; }
+    .hero { padding: 86px 0 72px; }
+    .hero-grid { display:grid; grid-template-columns: 1.15fr .85fr; align-items:center; gap:55px; }
+    .eyebrow { display:inline-flex; align-items:center; gap:9px; padding:7px 12px; border:1px solid var(--line); border-radius:999px; color:var(--mint); background:rgba(105,240,194,.06); font-size:12px; font-weight:800; letter-spacing:.09em; text-transform:uppercase; }
+    .dot { width:7px; height:7px; border-radius:50%; background:var(--mint); box-shadow:0 0 15px var(--mint); }
+    h1 { font-size:clamp(42px, 6vw, 72px); line-height:1.04; letter-spacing:-.065em; margin:22px 0 22px; }
+    .gradient { color:transparent; background:linear-gradient(100deg,var(--mint),var(--blue)); -webkit-background-clip:text; background-clip:text; }
+    .hero-copy { max-width:620px; color:var(--muted); font-size:17px; margin:0 0 28px; }
+    .actions { display:flex; flex-wrap:wrap; gap:12px; }
+    .btn { display:inline-flex; justify-content:center; align-items:center; gap:9px; min-height:48px; padding:12px 18px; border-radius:13px; font-weight:800; font-size:14px; border:1px solid transparent; transition:transform .2s, border-color .2s, background .2s; cursor:pointer; }
+    .btn:hover { transform:translateY(-2px); }
+    .btn-primary { background:linear-gradient(110deg,var(--mint),#8be4ec); color:#07151a; box-shadow:0 12px 30px rgba(105,240,194,.12); }
+    .btn-secondary { border-color:var(--line); background:rgba(255,255,255,.025); color:var(--text); }
+    .mini-proof { margin-top:30px; display:flex; align-items:center; gap:12px; font-size:13px; color:var(--muted); }
+    .mini-proof strong { color:var(--text); }
+    .proof-icon { display:grid; place-items:center; width:35px; height:35px; background:rgba(124,167,255,.12); border:1px solid rgba(124,167,255,.24); border-radius:11px; color:var(--blue); }
+    .visual { position:relative; min-height:365px; display:grid; place-items:center; }
+    .orb { position:absolute; width:270px; height:270px; border-radius:50%; background:linear-gradient(135deg,rgba(105,240,194,.16),rgba(124,167,255,.20)); filter:blur(3px); }
+    .code-card { position:relative; width:min(100%,390px); padding:0; overflow:hidden; border-radius:22px; border:1px solid rgba(170,195,255,.22); background:rgba(12,20,37,.9); box-shadow:var(--shadow); transform:rotate(2deg); }
+    .code-top { display:flex; align-items:center; gap:7px; padding:15px 17px; border-bottom:1px solid var(--line); color:var(--muted); font-size:12px; }
+    .light { height:8px; width:8px; border-radius:50%; background:#fd807d; }
+    .light:nth-child(2) { background:#ffd16c; } .light:nth-child(3) { background:#6aebad; }
+    .filename { margin-left:auto; opacity:.8; }
+    pre { padding:20px 23px 24px; margin:0; overflow:auto; color:#d9e4ff; font:13px/2 ui-monospace,SFMono-Regular,Consolas,monospace; }
+    .code-green { color:var(--mint); } .code-blue { color:#8db2ff; } .code-purple { color:#c8a5ff; } .code-muted { color:#6f819f; }
+    .float-tag { position:absolute; bottom:10px; right:-2px; padding:12px 16px; border:1px solid var(--line); background:#131d32; color:var(--text); border-radius:14px; font-size:12px; box-shadow:var(--shadow); }
+    .float-tag strong { color:var(--mint); display:block; font-size:15px; }
+    section { padding:74px 0; }
+    .section-head { max-width:650px; margin-bottom:30px; }
+    .kicker { color:var(--mint); text-transform:uppercase; letter-spacing:.14em; font-size:11px; font-weight:900; }
+    h2 { font-size:clamp(29px,4vw,43px); line-height:1.16; letter-spacing:-.045em; margin:9px 0 12px; }
+    .section-desc { color:var(--muted); margin:0; }
+    .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+    .card { padding:25px; border:1px solid var(--line); border-radius:var(--radius); background:linear-gradient(145deg,rgba(20,31,54,.82),rgba(13,20,36,.78)); box-shadow:0 16px 45px rgba(0,0,0,.1); }
+    .card h3 { margin:0 0 10px; font-size:18px; letter-spacing:-.025em; }
+    .card p { color:var(--muted); margin:0; font-size:14px; }
+    .check-list { list-style:none; margin:18px 0 0; padding:0; display:grid; gap:12px; }
+    .check-list li { display:flex; gap:10px; color:var(--muted); font-size:14px; }
+    .check { color:var(--mint); font-weight:900; }
+    .skills-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:13px; }
+    .skill { padding:19px; border:1px solid var(--line); border-radius:17px; background:rgba(17,26,46,.62); }
+    .skill-icon { display:grid; place-items:center; width:40px; height:40px; border-radius:12px; color:var(--mint); background:rgba(105,240,194,.09); margin-bottom:14px; font-weight:900; font-size:13px; }
+    .skill strong { display:block; font-size:14px; }
+    .skill small { color:var(--muted); font-size:12px; }
+    .projects { display:grid; grid-template-columns:repeat(3,1fr); gap:17px; }
+    .project { overflow:hidden; padding:0; }
+    .project-art { height:150px; background:linear-gradient(135deg,rgba(105,240,194,.15),rgba(124,167,255,.14)); border-bottom:1px solid var(--line); display:grid; place-items:center; position:relative; overflow:hidden; }
+    .browser { width:75%; border:1px solid rgba(183,203,245,.27); border-radius:9px; background:#0a1221; overflow:hidden; box-shadow:0 12px 30px rgba(0,0,0,.22); transform:rotate(-3deg); }
+    .browser-bar { height:14px; display:flex; gap:4px; align-items:center; padding-left:8px; border-bottom:1px solid var(--line); }
+    .browser-bar span { width:4px;height:4px;border-radius:50%;background:#6f819f; }
+    .browser-content { padding:13px; display:grid; gap:7px; }
+    .fake-line { height:6px; border-radius:9px; background:rgba(124,167,255,.42); width:70%; }
+    .fake-line.short { width:42%; background:rgba(105,240,194,.7); }
+    .fake-boxes { display:grid; grid-template-columns:repeat(3,1fr); gap:5px; margin-top:4px; }
+    .fake-boxes i { height:22px; border-radius:4px; background:rgba(184,202,242,.11); border:1px solid rgba(184,202,242,.1); }
+    .project-body { padding:21px; }
+    .project-label { color:var(--mint); font-size:10px; letter-spacing:.1em; text-transform:uppercase; font-weight:900; }
+    .project h3 { font-size:17px; margin:8px 0; }
+    .project p { color:var(--muted); font-size:13px; margin:0 0 14px; }
+    .tags { display:flex; gap:6px; flex-wrap:wrap; }
+    .tag { border:1px solid var(--line); border-radius:999px; padding:4px 8px; color:#c2cce0; font-size:10px; }
+    .notice { margin-top:18px; border-left:3px solid var(--blue); padding:12px 15px; background:rgba(124,167,255,.06); color:var(--muted); font-size:12px; border-radius:0 10px 10px 0; }
+    .contact-card { display:grid; grid-template-columns:1fr auto; gap:26px; align-items:center; padding:35px; border:1px solid rgba(105,240,194,.25); background:radial-gradient(ellipse at 85% 20%,rgba(105,240,194,.09),transparent 42%),var(--panel); border-radius:28px; }
+    .contact-card p { color:var(--muted); margin:0; max-width:600px; }
+    .contact-side { text-align:right; }
+    .phone-label { color:var(--muted); font-size:12px; display:block; margin-bottom:6px; }
+    .phone { color:var(--mint); font-weight:800; letter-spacing:.03em; }
+    footer { padding:26px 0 34px; border-top:1px solid var(--line); color:var(--muted); font-size:12px; }
+    .footer-inner { display:flex; justify-content:space-between; gap:18px; flex-wrap:wrap; }
+    .back-top { color:var(--mint); }
+    .toast { position:fixed; z-index:50; bottom:22px; left:50%; transform:translate(-50%,20px); background:#dffdf1; color:#082018; border-radius:999px; padding:10px 16px; font-size:13px; font-weight:800; opacity:0; pointer-events:none; transition:.25s; }
+    .toast.show { opacity:1; transform:translate(-50%,0); }
+    @media(max-width:850px) {
+      .hero-grid { grid-template-columns:1fr; gap:22px; }
+      .hero { padding-top:62px; }
+      .visual { min-height:310px; }
+      .code-card { max-width:460px; }
+      .skills-grid { grid-template-columns:repeat(2,1fr); }
+      .projects { grid-template-columns:1fr 1fr; }
+    }
+    @media(max-width:600px) {
+      .wrap { width:min(100% - 28px,1120px); }
+      nav { min-height:68px; }
+      .menu-toggle { display:block; }
+      .nav-links { display:none; position:absolute; left:14px; right:14px; top:68px; padding:16px; border:1px solid var(--line); border-radius:16px; background:#0d1527; flex-direction:column; align-items:stretch; gap:14px; }
+      .nav-links.open { display:flex; }
+      .nav-cta { text-align:center; }
+      h1 { font-size:43px; }
+      .hero-copy { font-size:15px; }
+      section { padding:52px 0; }
+      .about-grid,.projects { grid-template-columns:1fr; }
+      .skills-grid { gap:9px; }
+      .skill { padding:14px; }
+      .contact-card { grid-template-columns:1fr; padding:24px; }
+      .contact-side { text-align:left; }
+      .float-tag { right:0; bottom:0; }
+    }
+    @media print {
+      body { background:white!important; color:#111827!important; }
+      .nav-shell,.actions,.float-tag,.toast,footer .back-top { display:none!important; }
+      .hero,section { padding:22px 0!important; }
+      .hero-grid,.about-grid,.skills-grid,.projects,.contact-card { grid-template-columns:1fr 1fr!important; }
+      .card,.skill,.project,.contact-card,.code-card { background:white!important; color:#111827!important; border:1px solid #d1d5db!important; box-shadow:none!important; break-inside:avoid; }
+      .hero-copy,.section-desc,.card p,.check-list li,.skill small,.project p,.contact-card p,footer { color:#374151!important; }
+      h1,h2,h3,.phone { color:#111827!important; }
+      .code-top,pre { color:#111827!important; }
+      .orb { display:none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="nav-shell">
+    <nav class="wrap" aria-label="Navigation principale">
+      <a class="brand" href="#accueil" aria-label="Accueil Ali">
+        <span class="brand-mark">A.</span><span>ALI<span class="gradient">.DEV</span></span>
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
+      <div class="nav-links" id="navLinks">
+        <a href="#apropos">À propos</a>
+        <a href="#competences">Compétences</a>
+        <a href="#projets">Projets</a>
+        <a href="#contact" class="nav-cta">Me contacter ↗</a>
+      </div>
+    </nav>
+  </div>
+
+  <main id="accueil">
+    <header class="hero wrap">
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow"><span class="dot"></span> Portfolio personnel</div>
+          <h1>Bonjour, je suis <span class="gradient">Ali.</span><br>Développeur web<br>en devenir.</h1>
+          <p class="hero-copy">Je construis mon parcours dans le développement web et j'apprends à transformer des idées en expériences numériques simples, utiles et accessibles. Je suis motivé pour apprendre, progresser et participer à de nouveaux projets.</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="https://wa.me/212769687146?text=Bonjour%20Ali%2C%20je%20vous%20contacte%20depuis%20votre%20portfolio." target="_blank" rel="noopener noreferrer">✆ Me contacter sur WhatsApp</a>
+            <a class="btn btn-secondary" href="#projets">Découvrir le portfolio ↓</a>
+            <button class="btn btn-secondary" type="button" id="printCv">↧ Enregistrer mon CV en PDF</button>
+          </div>
+          <div class="mini-proof"><span class="proof-icon">&lt;/&gt;</span><span><strong>Curieux. Sérieux. En apprentissage.</strong><br>Objectif : développer des compétences réelles, projet après projet.</span></div>
+        </div>
+        <div class="visual" aria-label="Illustration de code informatique">
+          <div class="orb"></div>
+          <div class="code-card">
+            <div class="code-top"><span class="light"></span><span class="light"></span><span class="light"></span><span class="filename">ali-portfolio.html</span></div>
+            <pre><span class="code-muted">01</span>  <span class="code-blue">&lt;main</span> <span class="code-green">class</span>=<span class="code-purple">"portfolio"</span><span class="code-blue">&gt;</span>
+<span class="code-muted">02</span>    <span class="code-blue">&lt;h1&gt;</span>Bonjour, je suis Ali<span class="code-blue">&lt;/h1&gt;</span>
+<span class="code-muted">03</span>    <span class="code-blue">&lt;p&gt;</span>
+<span class="code-muted">04</span>      J'apprends chaque jour.
+<span class="code-muted">05</span>      Je construis mes projets.
+<span class="code-muted">06</span>    <span class="code-blue">&lt;/p&gt;</span>
+<span class="code-muted">07</span>    <span class="code-blue">&lt;a</span> <span class="code-green">href</span>=<span class="code-purple">"#contact"</span><span class="code-blue">&gt;</span>
+<span class="code-muted">08</span>      Parlons ensemble !
+<span class="code-muted">09</span>    <span class="code-blue">&lt;/a&gt;</span>
+<span class="code-muted">10</span>  <span class="code-blue">&lt;/main&gt;</span></pre>
+          </div>
+          <div class="float-tag"><strong>100% motivation</strong>Construire • Apprendre • Progresser</div>
+        </div>
+      </div>
+    </header>
+
+    <section id="apropos">
+      <div class="wrap">
+        <div class="section-head"><div class="kicker">À propos</div><h2>Un profil en construction,<br>une vraie envie de progresser.</h2><p class="section-desc">Ce portfolio présente mon objectif professionnel et mon parcours d'apprentissage. Je préfère montrer honnêtement où j'en suis et faire évoluer cette page au fil de mes projets.</p></div>
+        <div class="about-grid">
+          <article class="card">
+            <h3>Qui suis-je ?</h3>
+            <p>Je m'appelle Ali et je m'intéresse au développement web. Je souhaite apprendre à créer des sites modernes, adaptés aux téléphones et aux ordinateurs, puis enrichir ce portfolio avec des projets que j'aurai réellement réalisés.</p>
+            <ul class="check-list">
+              <li><span class="check">✓</span><span>Apprendre par la pratique et améliorer mon code.</span></li>
+              <li><span class="check">✓</span><span>Créer des interfaces claires et faciles à utiliser.</span></li>
+              <li><span class="check">✓</span><span>Échanger sur des projets, stages ou opportunités adaptées à mon niveau.</span></li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Mon objectif</h3>
+            <p>Développer progressivement mes compétences techniques, apprendre à travailler avec des outils professionnels et construire des exemples concrets de mon travail.</p>
+            <ul class="check-list">
+              <li><span class="check">→</span><span><strong>Maintenant :</strong> apprendre les bases du web.</span></li>
+              <li><span class="check">→</span><span><strong>Ensuite :</strong> réaliser de petits projets fonctionnels.</span></li>
+              <li><span class="check">→</span><span><strong>À terme :</strong> candidater à des opportunités junior adaptées à mes compétences.</span></li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="competences">
+      <div class="wrap">
+        <div class="section-head"><div class="kicker">Compétences</div><h2>Les technologies que j'explore.</h2><p class="section-desc">Ces éléments correspondent à mon parcours d'apprentissage : je les mettrai à jour au fur et à mesure de ma pratique.</p></div>
+        <div class="skills-grid">
+          <div class="skill"><div class="skill-icon">HTML</div><strong>HTML</strong><small>Bâtir la structure d'une page</small></div>
+          <div class="skill"><div class="skill-icon">CSS</div><strong>CSS</strong><small>Style et mise en page responsive</small></div>
+          <div class="skill"><div class="skill-icon">JS</div><strong>JavaScript</strong><small>Découvrir l'interactivité</small></div>
+          <div class="skill"><div class="skill-icon">GH</div><strong>GitHub</strong><small>Découvrir le versionnement et la publication</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projets">
+      <div class="wrap">
+        <div class="section-head"><div class="kicker">Portfolio</div><h2>Des projets pour apprendre en faisant.</h2><p class="section-desc">Les cartes suivantes sont des idées de projets d'entraînement. Remplace-les par tes réalisations réelles à mesure que tu les termines.</p></div>
+        <div class="projects">
+          <article class="card project">
+            <div class="project-art"><div class="browser"><div class="browser-bar"><span></span><span></span><span></span></div><div class="browser-content"><div class="fake-line short"></div><div class="fake-line"></div><div class="fake-boxes"><i></i><i></i><i></i></div></div></div></div>
+            <div class="project-body"><div class="project-label">Projet d'entraînement 01</div><h3>Page de présentation</h3><p>Une page web simple pour présenter une personne, une activité ou un petit service.</p><div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">Responsive</span></div></div>
+          </article>
+          <article class="card project">
+            <div class="project-art"><div class="browser"><div class="browser-bar"><span></span><span></span><span></span></div><div class="browser-content"><div class="fake-line"></div><div class="fake-line short"></div><div class="fake-line" style="width:88%"></div><div class="fake-boxes"><i></i><i></i><i></i></div></div></div></div>
+            <div class="project-body"><div class="project-label">Projet d'entraînement 02</div><h3>Liste de tâches</h3><p>Une petite application à construire pour s'exercer aux interactions et à la logique JavaScript.</p><div class="tags"><span class="tag">JavaScript</span><span class="tag">UI</span></div></div>
+          </article>
+          <article class="card project">
+            <div class="project-art"><div class="browser"><div class="browser-bar"><span></span><span></span><span></span></div><div class="browser-content"><div class="fake-line short"></div><div class="fake-boxes"><i></i><i></i><i></i></div><div class="fake-line" style="width:60%"></div></div></div></div>
+            <div class="project-body"><div class="project-label">Projet d'entraînement 03</div><h3>Carte de profil</h3><p>Une interface responsive pour présenter un profil, des compétences et un moyen de contact.</p><div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">Design</span></div></div>
+          </article>
+        </div>
+        <div class="notice">Transparence : les projets ci-dessus sont des exemples à réaliser, pas des missions professionnelles déjà achevées. Garde cette mention jusqu'à ce que tu les aies vraiment construits.</div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap">
+        <div class="contact-card">
+          <div><div class="kicker">Contact</div><h2>Parlons de votre projet.</h2><p>Vous avez une question, une idée de collaboration, un stage ou une opportunité adaptée à un profil junior ? Contactez-moi sur WhatsApp pour en discuter.</p></div>
+          <div class="contact-side"><span class="phone-label">WhatsApp / téléphone</span><div class="phone">+212 769 687 146</div><div class="actions" style="margin-top:14px"><a class="btn btn-primary" href="https://wa.me/212769687146?text=Bonjour%20Ali%2C%20je%20vous%20contacte%20depuis%20votre%20portfolio." target="_blank" rel="noopener noreferrer">Envoyer un message ↗</a><button class="btn btn-secondary" id="copyPhone" type="button">Copier le numéro</button></div></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="wrap footer-inner"><span>© <span id="year"></span> Ali — Portfolio personnel</span><span>Conçu pour apprendre et évoluer avec mes projets.</span><a class="back-top" href="#accueil">Retour en haut ↑</a></div></footer>
+  <div class="toast" id="toast" role="status" aria-live="polite">Numéro copié !</div>
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    menuToggle.addEventListener('click', () => {
+      const opened = navLinks.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', String(opened));
+    });
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+    }));
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('printCv').addEventListener('click', () => window.print());
+    const toast = document.getElementById('toast');
+    document.getElementById('copyPhone').addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText('+212769687146');
+        toast.textContent = 'Numéro copié !';
+      } catch (error) {
+        toast.textContent = 'Numéro : +212 769 687 146';
+      }
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2200);
+    });
+  </script>
+</body>
+</html>
